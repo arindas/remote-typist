@@ -2,6 +2,11 @@ from fastapi.templating import Jinja2Templates
 from fastapi import FastAPI, Form, Request
 from fastapi.responses import HTMLResponse
 
+from pynput.keyboard import Controller
+from pynput.keyboard import Key
+
+contoller = Controller()
+
 templates = Jinja2Templates(directory="templates")
 
 app = FastAPI()
@@ -13,6 +18,31 @@ async def index_html(request: Request):
                                       {'request': request})
 
 
+def type_key(key):
+    contoller.press(key)
+    contoller.release(key)
+
+
+def map_char_to_key(char, prev=None):
+    if char == '\r':
+        return
+
+    return Key.enter \
+        if prev == '\r' and char == '\n' else char
+
+
+def type_out_text(text: str):
+    prev = None
+
+    for char in text:
+        key = map_char_to_key(char, prev)
+
+        if key is not None:
+            type_key(key)
+
+        prev = char
+
+
 @app.post("/type_out/")
 async def type_out(selection: str = Form(...)):
     """Types out the given selection.
@@ -21,6 +51,6 @@ async def type_out(selection: str = Form(...)):
     Params:
         selection: string to be typed out.
     """
-    print(selection)
+    type_out_text(selection)
 
     return "Selection printed!"
