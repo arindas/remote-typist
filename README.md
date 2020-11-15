@@ -18,7 +18,7 @@ pip install -r requirements.txt
 
 ```
 cd remote-typist  # goto git clone directory
-./start-server.sh
+./start-server.bash
 
 # or, if you want to specify server HOST and PORT
 
