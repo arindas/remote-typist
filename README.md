@@ -25,3 +25,5 @@ cd remote-typist  # goto git clone directory
 # HOST = 0.0.0.0, PORT = 5050
 HOST="0.0.0.0" PORT="5050" ./start-server.bash
 ```
+
+Now visit `http://${HOST}:${PORT}` to see the form.
