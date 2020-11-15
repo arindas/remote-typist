@@ -51,8 +51,8 @@ async def type_out(selection: str = Form(...)):
     Params:
         selection: string to be typed out.
     """
-    time.sleep(7)
-    # You got 7 seconds to change your active form / window where typing is to be done
+    time.sleep(6)
+    # You got 6 seconds to change your active form / window where typing is to be done
     type_out_text(selection)
 
     return "Selection printed!"
