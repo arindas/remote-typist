@@ -26,8 +26,8 @@ def type_key(key):
         contoller.press(key)
         contoller.release(key)
     except:
-        # fail silently and move on...
-        print('[+] Given key not available!', key)
+        # skip this key and continue
+        print('[!] Given key not available!', key)
 
 
 def map_char_to_key(char, prev=None):
