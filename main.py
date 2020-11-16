@@ -51,7 +51,8 @@ def type_out_text(text: str):
 
 
 def wait_for_user():
-    wait_duration = os.getenv('WAIT_DURATION', 0)
+    #Default wait value 6 seconds
+    wait_duration = os.getenv('WAIT_DURATION', 6)
     time.sleep(int(wait_duration))
 
 
