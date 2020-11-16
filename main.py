@@ -22,8 +22,12 @@ async def index_html(request: Request):
 
 
 def type_key(key):
-    contoller.press(key)
-    contoller.release(key)
+    try:
+        contoller.press(key)
+        contoller.release(key)
+    except:
+        # fail silently and move on...
+        print('[+] Given key not available!', key)
 
 
 def map_char_to_key(char, prev=None):
