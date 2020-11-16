@@ -1,7 +1,10 @@
+import os
+import time
+
 from fastapi.templating import Jinja2Templates
 from fastapi import FastAPI, Form, Request
 from fastapi.responses import HTMLResponse
-import time
+
 from pynput.keyboard import Controller
 from pynput.keyboard import Key
 
@@ -43,6 +46,11 @@ def type_out_text(text: str):
         prev = char
 
 
+def wait_for_user():
+    wait_duration = os.getenv('WAIT_DURATION', 0)
+    time.sleep(int(wait_duration))
+
+
 @app.post("/type_out/")
 async def type_out(selection: str = Form(...)):
     """Types out the given selection.
@@ -51,8 +59,8 @@ async def type_out(selection: str = Form(...)):
     Params:
         selection: string to be typed out.
     """
-    time.sleep(6)
-    # You got 6 seconds to change your active form / window where typing is to be done
+
+    wait_for_user()
     type_out_text(selection)
 
-    return "Selection printed!"
+    return "Selection typed!"
