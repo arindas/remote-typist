@@ -1,17 +1,42 @@
+<title>Remote typist!</title>
+
 <style>
-h1, form, button {
-	margin-left: 20vw;
-	margin-right: 20vw;
-	width: 60vw;
-	text-align: center;
-}
+    .container {
+        margin: 0px auto;
+        margin-top: 50px;
+    }
+
+    .textinput_wrapper {
+        float: left;
+        width: 75vw;
+        height: 40vw;
+    }
+
+    .textinput {
+        float: left;
+        width: 75vw;
+        height: 40vw;
+        min-height: 75px;
+        outline: none;
+        resize: none;
+        border: 1px solid grey;
+    }
 </style>
-<h1>Remote Typist!</h1>
 
 <form id="sel_form" action="/type_out/" method="POST">
-	<textarea id="selection" name="selection" placeholder="Paste Selection Here." rows="30" cols="120"></textarea>
-</form>
+    <div class="container">
+        <h1>Remote Typist!</h1>
 
-<button type="submit" form="sel_form" value="Type">
-	Type
-</button>
+        <div class="textinput_wrapper">
+            <textarea id="selection"
+                name="selection"
+                placeholder="Paste Selection Here."
+                class="textinput"></textarea>
+
+            <button type="submit"
+                form="sel_form"
+                value="Type">Type</button>
+
+        </div>
+    </div>
+</form>
